@@ -1,0 +1,82 @@
+// Vampire Tonic Theme Variables
+:root {
+  --primary-color: #8B0000;
+  --secondary-color: #2F1B14;
+  --accent-color: #DC143C;
+  --background-color: #0D0D0D;
+  --surface-color: #1A1A1A;
+  --text-color: #E8E8E8;
+  --text-muted: #696969;
+  --border-color: #333333;
+  --highlight-color: #FF6B6B;
+  --shadow-color: rgba(0, 0, 0, 0.8);
+}
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Crimson Text', serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  
+  &:hover {
+    color: var(--highlight-color);
+    text-shadow: 0 0 8px var(--accent-color);
+  }
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
