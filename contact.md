@@ -1,33 +1,33 @@
 ---
 layout: page
 title: "Contact"
-subtitle: "[Your contact subtitle]"
+subtitle: "Reach out from the shadows"
 ---
 
 # Get in Touch
 
-[Brief introduction about how people can reach you and what you welcome]
+Whether you have questions about VampireTonic, need support, or want to share your dark creations, we'd love to hear from you.
 
 ## Ways to Connect
 
 ### Email
-[Your email address]: **[your-email@domain.com]**
+Drop us a line at: **vampire@tonic.com**
 
 ### Social Media
-- **Platform**: [Your handle or link]
-- **Platform**: [Your handle or link]
+- **GitHub**: [@Sifee27](https://github.com/Sifee27)
+- **Twitter**: [@VampireTonic](https://twitter.com/vampiretonic)
 
 ### Issues & Support
-[If this is a theme or project, include support information]
+If you encounter any bugs or have feature requests, please open an issue on our [GitHub repository](https://github.com/Sifee27/VampireTonic).
 
 ## Feedback
 
-[What kind of feedback you're looking for]
+We're constantly working to improve VampireTonic. Your feedback helps us make the theme even better for the community of dark web enthusiasts.
 
-### What I'd Love to Know
-- [Question 1]
-- [Question 2]
-- [Question 3]
+### What We'd Love to Know
+- How are you using VampireTonic?
+- What features would you like to see added?
+- Any bugs or issues you've encountered?
 - Success stories or showcases of your VampireTonic sites
 
 ## Contributing

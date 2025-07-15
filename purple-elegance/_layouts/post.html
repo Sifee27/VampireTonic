@@ -1,0 +1,105 @@
+---
+layout: default
+---
+
+<main class="post-content">
+  <div class="container">
+    <article class="post">
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%B %d, %Y" }}
+          </time>
+          {% if page.categories %}
+          <span class="post-categories">
+            {% for category in page.categories %}
+            <a href="/categories/{{ category | downcase }}" class="category">{{ category }}</a>
+            {% endfor %}
+          </span>
+          {% endif %}
+          {% if page.read_time %}
+          <span class="read-time">{{ page.read_time }} min read</span>
+          {% endif %}
+        </div>
+        
+        <h1 class="post-title">{{ page.title }}</h1>
+        
+        {% if page.subtitle %}
+        <p class="post-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        
+        {% if page.author %}
+        <div class="post-author">
+          <img src="{{ page.author.avatar | default: '/assets/images/default-avatar.jpg' }}" alt="{{ page.author.name }}" class="author-avatar">
+          <div class="author-info">
+            <span class="author-name">{{ page.author.name }}</span>
+            {% if page.author.bio %}
+            <span class="author-bio">{{ page.author.bio }}</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </header>
+      
+      {% if page.featured_image %}
+      <div class="post-featured-image">
+        <img src="{{ page.featured_image }}" alt="{{ page.title }}">
+      </div>
+      {% endif %}
+      
+      <div class="post-content-wrapper">
+        {{ content }}
+      </div>
+      
+      {% if page.tags %}
+      <div class="post-tags">
+        <h4>Tags</h4>
+        {% for tag in page.tags %}
+        <a href="/tags/{{ tag | downcase }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="post-share">
+        <h4>Share this post</h4>
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" class="share-btn twitter">
+            <i class="fab fa-twitter"></i> Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" class="share-btn facebook">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </article>
+    
+    <div class="post-navigation">
+      {% if page.previous %}
+      <div class="prev-post">
+        <a href="{{ page.previous.url }}" class="nav-link">
+          <i class="fas fa-chevron-left"></i>
+          <div class="nav-content">
+            <span class="nav-label">Previous Post</span>
+            <span class="nav-title">{{ page.previous.title }}</span>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      
+      {% if page.next %}
+      <div class="next-post">
+        <a href="{{ page.next.url }}" class="nav-link">
+          <div class="nav-content">
+            <span class="nav-label">Next Post</span>
+            <span class="nav-title">{{ page.next.title }}</span>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</main>

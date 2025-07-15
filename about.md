@@ -1,47 +1,12 @@
 ---
 layout: page
-title: "About [Your Site Name]"
-subtitle: "[Your subtitle or tagline]"
+title: "About VampireTonic"
+subtitle: "Born from darkness, crafted with passion"
 ---
 
-# About [Your Site Name]
+# About VampireTonic
 
-[Write a brief introduction about your website, blog, or project. Describe what visitors can expect to find here and what makes your site unique.]
-
-## What You'll Find Here
-
-[Describe the type of content you publish. For example:]
-- [Content type 1] - [Brief description]
-- [Content type 2] - [Brief description]
-- [Content type 3] - [Brief description]
-
-## My Story
-
-[Write about yourself, your background, and what brought you to create this site. This is your personal or professional story.]
-
-## My Vision
-
-[Describe your goals for the site, what you hope to achieve, and the message you want to convey.]
-
-## My Interests
-
-[List your main interests, hobbies, or areas of expertise that you write about.]
-
-## Connect With Me
-
-[Add your contact information and social media links]
-
-- **Email**: [your-email@domain.com]
-- **Social Media**: [Your social media handles]
-- **Website**: [Your other websites or portfolio]
-
-## Technical Details
-
-[Optional: Information about how your site is built, technologies used, theme details, etc.]
-
----
-
-*[Add any additional notes, disclaimers, or calls to action]*
+VampireTonic is a Jekyll theme that embraces the dark, gothic aesthetic inspired by vampire mythology and gothic literature. Created for those who appreciate the beauty found in shadows and the elegance of the macabre.
 
 ## Design Philosophy
 

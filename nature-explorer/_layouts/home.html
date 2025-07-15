@@ -1,0 +1,101 @@
+---
+layout: default
+---
+
+<div class="home-page">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h1 class="hero-title">{{ site.title }}</h1>
+        <p class="hero-subtitle">{{ site.description }}</p>
+        <a href="#featured-content" class="hero-cta">Start Exploring</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured-content" class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Latest Adventures</h2>
+      <div class="featured-posts">
+        {% for post in site.posts limit:3 %}
+        <article class="featured-post">
+          <div class="post-image">
+            {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            {% else %}
+            <div class="default-image">
+              <i class="fas fa-mountain"></i>
+            </div>
+            {% endif %}
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+              <span class="post-category">{{ post.category | capitalize }}</span>
+            </div>
+            <h3 class="post-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="categories-section">
+    <div class="container">
+      <h2 class="section-title">Explore By Category</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-route"></i>
+          </div>
+          <h3>Trail Guides</h3>
+          <p>Discover the best hiking trails and outdoor routes</p>
+          <a href="/trails/" class="category-link">Explore Trails</a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-paw"></i>
+          </div>
+          <h3>Wildlife</h3>
+          <p>Learn about animals and their natural habitats</p>
+          <a href="/wildlife/" class="category-link">View Wildlife</a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>Photography</h3>
+          <p>Nature photography tips and stunning captures</p>
+          <a href="/photography/" class="category-link">Browse Photos</a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-backpack"></i>
+          </div>
+          <h3>Gear Reviews</h3>
+          <p>Reviews and recommendations for outdoor equipment</p>
+          <a href="/gear/" class="category-link">Check Gear</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Connected to Nature</h2>
+        <p>Get the latest trail updates, wildlife sightings, and photography tips delivered to your inbox.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

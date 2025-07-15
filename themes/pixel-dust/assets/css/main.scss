@@ -1,0 +1,275 @@
+---
+# PixelDust Theme - Main CSS
+---
+
+@import "pixel-dust/base";
+@import "pixel-dust/layout";
+@import "pixel-dust/components";
+@import "pixel-dust/syntax-highlighting";
+
+// Pixel animations and effects
+@keyframes pixel-particle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pixel-matrix {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes pixel-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+// Particle system
+.particle-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary-color);
+    animation: pixel-particle 10s linear infinite;
+    
+    &:nth-child(even) {
+      background-color: var(--accent-color);
+      animation-duration: 12s;
+    }
+    
+    &:nth-child(3n) {
+      background-color: var(--secondary-color);
+      animation-duration: 8s;
+    }
+  }
+}
+
+// Matrix effect
+.matrix-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.1;
+  
+  .matrix-column {
+    position: absolute;
+    font-family: var(--font-pixel);
+    font-size: var(--font-size-xs);
+    color: var(--primary-color);
+    animation: pixel-matrix 15s linear infinite;
+    white-space: nowrap;
+  }
+}
+
+// Scan line effect
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: pixel-scan 4s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+// Pixel cursor
+.pixel-cursor {
+  cursor: none;
+  
+  .cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border: 2px solid var(--background-color);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+    
+    &.cursor-hover {
+      transform: scale(1.5);
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+// Glitch effect
+.glitch {
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+  }
+  
+  &::before {
+    animation: glitch-1 2s infinite;
+    color: var(--pixel-red);
+    z-index: -1;
+  }
+  
+  &::after {
+    animation: glitch-2 2s infinite;
+    color: var(--pixel-blue);
+    z-index: -2;
+  }
+  
+  @keyframes glitch-1 {
+    0% { transform: none; }
+    1% { transform: translate(2px, 1px); }
+    2% { transform: translate(-1px, -1px); }
+    3% { transform: translate(1px, 2px); }
+    4% { transform: translate(-2px, -1px); }
+    5% { transform: none; }
+    100% { transform: none; }
+  }
+  
+  @keyframes glitch-2 {
+    0% { transform: none; }
+    1% { transform: translate(-1px, 1px); }
+    2% { transform: translate(2px, -1px); }
+    3% { transform: translate(-2px, 1px); }
+    4% { transform: translate(1px, -2px); }
+    5% { transform: none; }
+    100% { transform: none; }
+  }
+}
+
+// Hover effects for interactive elements
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+// Pixel art filters
+.pixel-art {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  
+  &:hover {
+    filter: 
+      contrast(1.1) 
+      brightness(1.1) 
+      drop-shadow(0 0 10px var(--primary-color));
+  }
+}
+
+// Retro loading animation
+.retro-loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border: 2px solid var(--primary-color);
+    width: 100%;
+    height: 100%;
+    animation: retro-spin 1s linear infinite;
+  }
+  
+  &::after {
+    animation-delay: 0.5s;
+    border-color: var(--accent-color);
+  }
+  
+  @keyframes retro-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particle-system,
+  .matrix-effect,
+  .scan-line {
+    display: none;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #00ff00;
+    --secondary-color: #ff6600;
+    --accent-color: #ff0099;
+    --background-color: #000000;
+    --surface-color: #111111;
+    --text-color: #ffffff;
+    --border-color: #ffffff;
+  }
+}

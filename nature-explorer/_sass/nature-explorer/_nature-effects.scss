@@ -1,0 +1,411 @@
+// Nature Explorer Theme - Nature Effects and Animations
+// Animated elements that enhance the nature theme
+
+// Nature effects container
+.nature-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+// Floating leaves animation
+.leaves-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  .leaf {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: float-down linear infinite;
+    
+    &.leaf-1 {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 12s;
+    }
+    
+    &.leaf-2 {
+      left: 20%;
+      animation-delay: 2s;
+      animation-duration: 15s;
+    }
+    
+    &.leaf-3 {
+      left: 40%;
+      animation-delay: 4s;
+      animation-duration: 10s;
+    }
+    
+    &.leaf-4 {
+      left: 60%;
+      animation-delay: 6s;
+      animation-duration: 18s;
+    }
+    
+    &.leaf-5 {
+      left: 80%;
+      animation-delay: 8s;
+      animation-duration: 14s;
+    }
+    
+    &.leaf-6 {
+      left: 90%;
+      animation-delay: 10s;
+      animation-duration: 16s;
+    }
+  }
+}
+
+@keyframes float-down {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  
+  10% {
+    opacity: 0.6;
+  }
+  
+  90% {
+    opacity: 0.6;
+  }
+  
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+// Parallax layers
+.parallax-layers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  .parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+    
+    &.layer-1 {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path d="M0,600 Q200,500 400,600 Q600,700 800,600 Q1000,500 1200,600 L1200,800 L0,800 Z" fill="%23228B22"/></svg>');
+      z-index: 1;
+    }
+    
+    &.layer-2 {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path d="M0,700 Q300,600 600,700 Q900,800 1200,700 L1200,800 L0,800 Z" fill="%2332CD32"/></svg>');
+      z-index: 2;
+    }
+    
+    &.layer-3 {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><circle cx="100" cy="100" r="20" fill="%23228B22"/><circle cx="300" cy="200" r="15" fill="%2332CD32"/><circle cx="500" cy="150" r="25" fill="%23228B22"/><circle cx="700" cy="250" r="18" fill="%2332CD32"/><circle cx="900" cy="180" r="22" fill="%23228B22"/></svg>');
+      z-index: 3;
+      animation: drift 20s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+// Weather effects
+.weather-effects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  .sun-rays {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, 
+      rgba(255, 223, 0, 0.1) 0%,
+      rgba(255, 223, 0, 0.05) 50%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    animation: rotate 30s linear infinite;
+  }
+  
+  .cloud-shadows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><ellipse cx="200" cy="100" rx="80" ry="40" fill="rgba(0,0,0,0.05)"/><ellipse cx="600" cy="200" rx="120" ry="60" fill="rgba(0,0,0,0.03)"/><ellipse cx="1000" cy="150" rx="100" ry="50" fill="rgba(0,0,0,0.04)"/></svg>');
+    background-size: cover;
+    animation: cloud-move 40s ease-in-out infinite;
+  }
+  
+  .weather-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(74, 124, 89, 0.6);
+    border-radius: 50%;
+    animation: particle-fall linear forwards;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cloud-move {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  
+  50% {
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes particle-fall {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  
+  10% {
+    opacity: 1;
+  }
+  
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+// Trail particles
+.trail-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(45, 80, 22, 0.3);
+    border-radius: 50%;
+    animation: trail-particle linear infinite;
+    
+    &.particle-1 {
+      left: 5%;
+      top: 20%;
+      animation-delay: 0s;
+    }
+    
+    &.particle-2 {
+      left: 15%;
+      top: 40%;
+      animation-delay: 5s;
+    }
+    
+    &.particle-3 {
+      left: 25%;
+      top: 60%;
+      animation-delay: 10s;
+    }
+    
+    &.particle-4 {
+      left: 35%;
+      top: 80%;
+      animation-delay: 15s;
+    }
+    
+    &.particle-5 {
+      left: 45%;
+      top: 30%;
+      animation-delay: 20s;
+    }
+  }
+}
+
+@keyframes trail-particle {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  
+  10% {
+    opacity: 0.5;
+  }
+  
+  90% {
+    opacity: 0.5;
+  }
+  
+  100% {
+    transform: translateX(100vw) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+// Interactive hover effects
+.featured-post,
+.category-card {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+// Pulse effect for buttons
+.btn,
+.hero-cta,
+.category-link {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: width 0.3s ease, height 0.3s ease;
+    transform: translate(-50%, -50%);
+  }
+  
+  &:hover::after {
+    width: 200%;
+    height: 200%;
+  }
+}
+
+// Breathing animation for icons
+.category-icon,
+.hero-section .fa-tree {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Gentle sway animation
+.site-logo i {
+  animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  
+  25% {
+    transform: rotate(2deg);
+  }
+  
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+// Shimmer effect for loading states
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 2s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  
+  100% {
+    left: 100%;
+  }
+}
+
+// Disable animations for users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .nature-effects,
+  .leaf,
+  .parallax-layer,
+  .weather-effects,
+  .trail-particles,
+  .loading-shimmer {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .parallax-layer {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,361 @@
+// PixelDust Syntax Highlighting
+// Pixel-themed code syntax highlighting
+
+// Base code block styling
+.highlight {
+  background-color: var(--surface-color);
+  border: var(--pixel-border);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  }
+  
+  // Language label
+  &[data-lang]::after {
+    content: attr(data-lang);
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-family: var(--font-pixel);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+  }
+}
+
+// Syntax highlighting colors
+.highlight {
+  // General
+  .c { color: var(--text-dim); font-style: italic; } // Comment
+  .err { color: var(--pixel-red); } // Error
+  .k { color: var(--primary-color); font-weight: bold; } // Keyword
+  .o { color: var(--text-color); } // Operator
+  .cm { color: var(--text-dim); font-style: italic; } // Comment.Multiline
+  .cp { color: var(--pixel-yellow); } // Comment.Preproc
+  .c1 { color: var(--text-dim); font-style: italic; } // Comment.Single
+  .cs { color: var(--text-dim); font-style: italic; } // Comment.Special
+  
+  // Generic
+  .gd { color: var(--pixel-red); } // Generic.Deleted
+  .ge { font-style: italic; } // Generic.Emph
+  .gr { color: var(--pixel-red); } // Generic.Error
+  .gh { color: var(--text-color); font-weight: bold; } // Generic.Heading
+  .gi { color: var(--pixel-green); } // Generic.Inserted
+  .go { color: var(--text-muted); } // Generic.Output
+  .gp { color: var(--text-muted); } // Generic.Prompt
+  .gs { font-weight: bold; } // Generic.Strong
+  .gu { color: var(--text-color); font-weight: bold; } // Generic.Subheading
+  .gt { color: var(--pixel-red); } // Generic.Traceback
+  
+  // Keywords
+  .kc { color: var(--primary-color); font-weight: bold; } // Keyword.Constant
+  .kd { color: var(--primary-color); font-weight: bold; } // Keyword.Declaration
+  .kn { color: var(--primary-color); font-weight: bold; } // Keyword.Namespace
+  .kp { color: var(--primary-color); font-weight: bold; } // Keyword.Pseudo
+  .kr { color: var(--primary-color); font-weight: bold; } // Keyword.Reserved
+  .kt { color: var(--secondary-color); font-weight: bold; } // Keyword.Type
+  
+  // Literals
+  .l { color: var(--pixel-cyan); } // Literal
+  .ld { color: var(--pixel-cyan); } // Literal.Date
+  .m { color: var(--pixel-cyan); } // Literal.Number
+  .s { color: var(--pixel-green); } // Literal.String
+  
+  // Names
+  .na { color: var(--pixel-orange); } // Name.Attribute
+  .nb { color: var(--pixel-blue); } // Name.Builtin
+  .nc { color: var(--secondary-color); font-weight: bold; } // Name.Class
+  .no { color: var(--pixel-red); } // Name.Constant
+  .nd { color: var(--pixel-purple); } // Name.Decorator
+  .ni { color: var(--pixel-red); } // Name.Entity
+  .ne { color: var(--pixel-red); font-weight: bold; } // Name.Exception
+  .nf { color: var(--pixel-blue); } // Name.Function
+  .nl { color: var(--pixel-yellow); } // Name.Label
+  .nn { color: var(--text-color); } // Name.Namespace
+  .nx { color: var(--text-color); } // Name.Other
+  .py { color: var(--text-color); } // Name.Property
+  .nt { color: var(--primary-color); font-weight: bold; } // Name.Tag
+  .nv { color: var(--pixel-cyan); } // Name.Variable
+  .ow { color: var(--primary-color); font-weight: bold; } // Operator.Word
+  
+  // Numbers
+  .mf { color: var(--pixel-cyan); } // Literal.Number.Float
+  .mh { color: var(--pixel-cyan); } // Literal.Number.Hex
+  .mi { color: var(--pixel-cyan); } // Literal.Number.Integer
+  .mo { color: var(--pixel-cyan); } // Literal.Number.Oct
+  
+  // Strings
+  .sb { color: var(--pixel-green); } // Literal.String.Backtick
+  .sc { color: var(--pixel-green); } // Literal.String.Char
+  .sd { color: var(--pixel-green); font-style: italic; } // Literal.String.Doc
+  .s2 { color: var(--pixel-green); } // Literal.String.Double
+  .se { color: var(--pixel-yellow); } // Literal.String.Escape
+  .sh { color: var(--pixel-green); } // Literal.String.Heredoc
+  .si { color: var(--pixel-yellow); } // Literal.String.Interpol
+  .sx { color: var(--pixel-green); } // Literal.String.Other
+  .sr { color: var(--pixel-red); } // Literal.String.Regex
+  .s1 { color: var(--pixel-green); } // Literal.String.Single
+  .ss { color: var(--pixel-purple); } // Literal.String.Symbol
+  
+  // Variables
+  .bp { color: var(--pixel-blue); } // Name.Builtin.Pseudo
+  .vc { color: var(--pixel-cyan); } // Name.Variable.Class
+  .vg { color: var(--pixel-cyan); } // Name.Variable.Global
+  .vi { color: var(--pixel-cyan); } // Name.Variable.Instance
+  .il { color: var(--pixel-cyan); } // Literal.Number.Integer.Long
+  
+  // Whitespace
+  .w { color: var(--text-color); } // Text.Whitespace
+}
+
+// Inline code
+code {
+  background-color: var(--surface-color);
+  color: var(--pixel-green);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  
+  // No additional styling when inside highlight blocks
+  .highlight & {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+// Line numbers
+.highlight .lineno {
+  color: var(--text-dim);
+  background-color: var(--background-color);
+  padding-right: var(--spacing-md);
+  border-right: 1px solid var(--border-color);
+  margin-right: var(--spacing-md);
+  user-select: none;
+}
+
+// Code block with copy button
+.code-block {
+  position: relative;
+  
+  .copy-button {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background-color: var(--background-color);
+    border: var(--pixel-border);
+    color: var(--text-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-family: var(--font-pixel);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: var(--transition-base);
+    z-index: 10;
+    
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+    
+    &.copied {
+      background-color: var(--pixel-green);
+      color: var(--background-color);
+    }
+  }
+}
+
+// Terminal/console styling
+.terminal {
+  background-color: var(--background-color);
+  border: var(--pixel-border);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--pixel-green);
+  
+  &::before {
+    content: '$ ';
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  .output {
+    color: var(--text-color);
+    margin-left: var(--spacing-md);
+    
+    &.error {
+      color: var(--pixel-red);
+    }
+    
+    &.success {
+      color: var(--pixel-green);
+    }
+    
+    &.warning {
+      color: var(--pixel-yellow);
+    }
+  }
+}
+
+// Diff syntax highlighting
+.diff {
+  .highlight {
+    background-color: var(--surface-color);
+    
+    .gd {
+      background-color: rgba(255, 65, 54, 0.1);
+      color: var(--pixel-red);
+    }
+    
+    .gi {
+      background-color: rgba(0, 255, 65, 0.1);
+      color: var(--pixel-green);
+    }
+    
+    .gu {
+      background-color: rgba(255, 220, 0, 0.1);
+      color: var(--pixel-yellow);
+    }
+  }
+}
+
+// Language-specific styling
+.language-javascript,
+.language-js {
+  .highlight::after {
+    content: 'JS';
+    background-color: var(--pixel-yellow);
+    color: var(--background-color);
+  }
+}
+
+.language-python,
+.language-py {
+  .highlight::after {
+    content: 'PY';
+    background-color: var(--pixel-blue);
+    color: var(--background-color);
+  }
+}
+
+.language-html {
+  .highlight::after {
+    content: 'HTML';
+    background-color: var(--pixel-orange);
+    color: var(--background-color);
+  }
+}
+
+.language-css {
+  .highlight::after {
+    content: 'CSS';
+    background-color: var(--pixel-blue);
+    color: var(--background-color);
+  }
+}
+
+.language-scss,
+.language-sass {
+  .highlight::after {
+    content: 'SCSS';
+    background-color: var(--pixel-pink);
+    color: var(--background-color);
+  }
+}
+
+.language-json {
+  .highlight::after {
+    content: 'JSON';
+    background-color: var(--pixel-green);
+    color: var(--background-color);
+  }
+}
+
+.language-yaml,
+.language-yml {
+  .highlight::after {
+    content: 'YAML';
+    background-color: var(--pixel-red);
+    color: var(--background-color);
+  }
+}
+
+.language-bash,
+.language-shell {
+  .highlight::after {
+    content: 'BASH';
+    background-color: var(--pixel-cyan);
+    color: var(--background-color);
+  }
+}
+
+.language-c {
+  .highlight::after {
+    content: 'C';
+    background-color: var(--pixel-purple);
+    color: var(--background-color);
+  }
+}
+
+.language-cpp {
+  .highlight::after {
+    content: 'C++';
+    background-color: var(--pixel-purple);
+    color: var(--background-color);
+  }
+}
+
+.language-java {
+  .highlight::after {
+    content: 'JAVA';
+    background-color: var(--pixel-orange);
+    color: var(--background-color);
+  }
+}
+
+.language-go {
+  .highlight::after {
+    content: 'GO';
+    background-color: var(--pixel-cyan);
+    color: var(--background-color);
+  }
+}
+
+.language-rust {
+  .highlight::after {
+    content: 'RUST';
+    background-color: var(--pixel-orange);
+    color: var(--background-color);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .highlight {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+  
+  .code-block .copy-button {
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    padding: var(--spacing-xs);
+  }
+}

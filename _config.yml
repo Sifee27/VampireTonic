@@ -1,0 +1,88 @@
+title: VampireTonic
+description: "A hauntingly beautiful Jekyll theme with deep crimson accents glowing against shadowy backgrounds, featuring elegant gothic typography perfect for dark poetry, mysterious stories, and content that thrives in eternal night."
+encoding: utf-8
+
+# Theme settings
+author: "VampireTonic"
+email: "vampire@tonic.com"
+baseurl: ""
+url: ""
+
+# Social media accounts
+github_username: Sifee27
+repository: Sifee27/VampireTonic
+
+# SEO settings
+lang: en
+timezone: UTC
+
+# Vampire theme colors
+theme_colors:
+  primary: "#8B0000"      # Dark red
+  secondary: "#2F1B14"    # Dark brown
+  accent: "#DC143C"       # Crimson
+  background: "#0D0D0D"   # Near black
+  text: "#E8E8E8"         # Light gray
+  muted: "#B8B8B8"        # Better contrast
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Kramdown settings
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# Security
+safe: true
+incremental: false
+lsi: false
+future: false
+unpublished: false
+
+# Performance
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
+exclude: ["README.md", "LICENSE", "*.gem", "*.gemspec", "Gemfile.lock", "node_modules", "vendor", ".sass-cache", ".jekyll-cache", "gemfiles", "_site"]
+
+# Include files
+include:
+  - _pages

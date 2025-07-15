@@ -1,0 +1,77 @@
+# Arctic Magical Jekyll Theme Configuration
+title: "Arctic Magical"
+email: your-email@example.com
+description: >-
+  A mystical Jekyll theme inspired by Arctic magic, featuring aurora effects,
+  crystalline designs, and winter enchantment.
+baseurl: ""
+url: "http://localhost:4000"
+twitter_username: yourusername
+github_username: yourusername
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Theme settings
+arctic_magical:
+  # Aurora effects
+  aurora_effects: true
+  snow_animation: true
+  crystal_transitions: true
+  
+  # Color scheme
+  primary_color: "#4FC3F7"    # Ice blue
+  secondary_color: "#81D4FA"  # Light cyan
+  accent_color: "#E1F5FE"     # Pale blue
+  background_color: "#F3F8FF" # Snow white
+  text_color: "#1A237E"       # Deep blue
+  
+  # Magic effects
+  particle_effects: true
+  frost_borders: true
+  shimmer_text: true
+
+# Performance settings
+sass:
+  style: compressed
+  sourcemap: never
+
+# Security
+strict_front_matter: true
+
+# SEO
+lang: en
+locale: en_US
+
+# Social media
+social:
+  name: Arctic Magical
+  links:
+    - https://twitter.com/yourusername
+    - https://github.com/yourusername
+
+# Analytics (optional)
+google_analytics: UA-XXXXXXXX-X
+
+# Comments (optional)
+disqus:
+  shortname: your-disqus-shortname
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .sass-cache/
+  - .jekyll-cache/
+  - .jekyll-metadata
+  - README.md
+  - LICENSE

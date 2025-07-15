@@ -1,0 +1,118 @@
+# QuickDocs Jekyll Theme Configuration
+
+# Site settings
+title: "[Your Documentation Site Name]"
+description: "[Brief description of your documentation]"
+url: "[Your site URL]"
+baseurl: ""
+
+# Documentation settings
+docs:
+  title: "[Your Documentation Title]"
+  description: "[Description of what this documentation covers]"
+  version: "1.0.0"
+  
+# Multi-version support
+versions:
+  - version: "1.0.0"
+    title: "Version 1.0"
+    path: "/"
+    default: true
+  # Add more versions as needed
+  # - version: "2.0.0"
+  #   title: "Version 2.0"
+  #   path: "/v2/"
+
+# Navigation structure (auto-generated from _docs folder structure)
+nav:
+  auto_generate: true
+  # Manual navigation override (optional)
+  # structure:
+  #   - title: "Getting Started"
+  #     items:
+  #       - title: "Introduction"
+  #         url: "/introduction/"
+  #       - title: "Installation"
+  #         url: "/installation/"
+
+# Theme settings
+theme_settings:
+  # Color scheme
+  primary_color: "#2563eb"
+  secondary_color: "#64748b"
+  accent_color: "#10b981"
+  
+  # Typography
+  font_family: "Inter, system-ui, sans-serif"
+  code_font: "JetBrains Mono, Consolas, monospace"
+  
+  # Layout
+  sidebar_width: "280px"
+  content_max_width: "800px"
+  
+  # Features
+  search_enabled: true
+  dark_mode_enabled: true
+  edit_page_enabled: true
+  last_updated_enabled: true
+  
+  # Repository settings (for edit page links)
+  repository:
+    url: "[Your repository URL]"
+    branch: "main"
+    docs_folder: "_docs"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-toc
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:path/
+    sort_by: weight
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# TOC settings
+toc:
+  min_level: 2
+  max_level: 4
+  no_toc_section_class: no-toc
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "docs"
+      toc: true
+      edit_page: true

@@ -1,0 +1,327 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ site.title | default: "[Your Site Title]" }}</h1>
+    <p class="hero-description">{{ site.description | default: "[Write a brief description of your site here]" }}</p>
+    
+    {% if site.quick_start_link %}
+    <div class="hero-actions">
+      <a href="{{ site.quick_start_link | relative_url }}" class="btn btn-primary btn-lg">
+        <i class="fas fa-rocket"></i>
+        Get Started
+      </a>
+      
+      {% if site.github_url %}
+      <a href="{{ site.github_url }}" class="btn btn-outline btn-lg" target="_blank">
+        <i class="fab fa-github"></i>
+        View on GitHub
+      </a>
+      {% endif %}
+    </div>
+    {% else %}
+    <div class="hero-actions">
+      <a href="[/docs/getting-started/ or your quick start link]" class="btn btn-primary btn-lg">
+        <i class="fas fa-rocket"></i>
+        [Your CTA Button Text]
+      </a>
+      
+      <a href="[Your GitHub URL or secondary link]" class="btn btn-outline btn-lg" target="_blank">
+        <i class="fab fa-github"></i>
+        [Your Secondary Button Text]
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="home-content">
+  <div class="home-grid">
+    {% if site.features %}
+    <div class="home-section">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        {% for feature in site.features %}
+        <div class="card">
+          <div class="card-body">
+            {% if feature.icon %}
+            <div class="feature-icon">
+              <i class="{{ feature.icon }}"></i>
+            </div>
+            {% endif %}
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="home-section">
+      <h2>[Your Features Section Title]</h2>
+      <div class="feature-grid">
+        <!-- Add your features to _config.yml like this:
+        features:
+          - title: "[Feature Title]"
+            description: "[Feature description]"
+            icon: "[Font Awesome icon class]"
+        -->
+        <div class="card">
+          <div class="card-body">
+            <div class="feature-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <h3>[Configure features in _config.yml]</h3>
+            <p>[Add your features to the site configuration to display them here]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if site.quick_links %}
+    <div class="home-section">
+      <h2>Quick Links</h2>
+      <div class="quick-links">
+        {% for link in site.quick_links %}
+        <a href="{{ link.url | relative_url }}" class="quick-link">
+          {% if link.icon %}
+          <i class="{{ link.icon }}"></i>
+          {% endif %}
+          <span>{{ link.title }}</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="home-section">
+      <h2>[Your Quick Links Section Title]</h2>
+      <div class="quick-links">
+        <!-- Add your quick links to _config.yml like this:
+        quick_links:
+          - title: "[Link Title]"
+            url: "[Link URL]"
+            icon: "[Font Awesome icon class]"
+        -->
+        <a href="[/docs/getting-started/ or your link]" class="quick-link">
+          <i class="fas fa-book"></i>
+          <span>[Configure quick links in _config.yml]</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if site.latest_updates %}
+    <div class="home-section">
+      <h2>Latest Updates</h2>
+      <div class="updates-list">
+        {% for update in site.latest_updates %}
+        <div class="update-item">
+          <span class="update-date">{{ update.date | date: "%B %d, %Y" }}</span>
+          <h4>{{ update.title }}</h4>
+          <p>{{ update.description }}</p>
+          {% if update.link %}
+          <a href="{{ update.link | relative_url }}" class="update-link">
+            Read more <i class="fas fa-arrow-right"></i>
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="home-section">
+      <h2>[Your Updates Section Title]</h2>
+      <div class="updates-list">
+        <!-- Add your updates to _config.yml like this:
+        latest_updates:
+          - date: "YYYY-MM-DD"
+            title: "[Update Title]"
+            description: "[Update description]"
+            link: "[Link to full update]"
+        -->
+        <div class="update-item">
+          <span class="update-date">[Configure updates in _config.yml]</span>
+          <h4>[Update Title]</h4>
+          <p>[Add your latest updates to the site configuration to display them here]</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  
+  <div class="home-footer">
+    {{ content }}
+  </div>
+</div>
+
+<style>
+.home-hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-description {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.home-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.home-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-color);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.quick-link:hover {
+  background-color: var(--bg-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.quick-link i:first-child {
+  color: var(--primary-color);
+}
+
+.quick-link i:last-child {
+  margin-left: auto;
+  opacity: 0.5;
+}
+
+.updates-list {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.update-item {
+  padding: var(--spacing-lg);
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.update-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.update-item h4 {
+  margin: var(--spacing-sm) 0;
+  color: var(--text-color);
+}
+
+.update-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-top: var(--spacing-sm);
+}
+
+.update-link:hover {
+  text-decoration: none;
+}
+
+.home-footer {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-md);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -1,0 +1,426 @@
+// Nature Explorer Theme - Layout Styles
+// Main layout components and structure
+
+// Page wrapper
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(245, 245, 220, 0.9) 0%,
+      rgba(240, 248, 255, 0.8) 50%,
+      rgba(245, 245, 220, 0.9) 100%
+    );
+    z-index: -1;
+  }
+}
+
+// Header
+.site-header {
+  position: relative;
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 15%) 100%);
+  color: white;
+  padding: $spacing-sm 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  
+  .header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,10 80,20 Q90,50 80,80 Q50,90 20,80 Q10,50 20,20 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+    background-size: 200px 200px;
+    opacity: 0.3;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .site-branding {
+    .site-logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      
+      i {
+        margin-right: $spacing-xs;
+        font-size: 1.8rem;
+        color: lighten($primary-color, 40%);
+      }
+    }
+  }
+  
+  .main-navigation {
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      
+      span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+      
+      @media (max-width: $breakpoint-md) {
+        display: flex;
+      }
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      gap: $spacing-md;
+      
+      @media (max-width: $breakpoint-md) {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: $primary-color;
+        flex-direction: column;
+        padding: $spacing-md;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        
+        &.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      
+      .nav-item {
+        .nav-link {
+          color: white;
+          padding: $spacing-xs $spacing-sm;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          position: relative;
+          
+          &:hover,
+          &.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+          }
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: lighten($primary-color, 40%);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+          }
+          
+          &.active::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    .search-toggle,
+    .weather-widget {
+      padding: $spacing-xs;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+    }
+    
+    .weather-widget {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Search overlay
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .search-container {
+    background: white;
+    border-radius: 8px;
+    padding: $spacing-lg;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    
+    .search-form {
+      display: flex;
+      gap: $spacing-sm;
+      
+      .search-input {
+        flex: 1;
+        padding: $spacing-sm;
+        border: 2px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+      
+      .search-submit {
+        padding: $spacing-sm $spacing-md;
+        background: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+      }
+    }
+    
+    .search-close {
+      position: absolute;
+      top: $spacing-sm;
+      right: $spacing-sm;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $text-color;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// Main content
+.main-content {
+  flex: 1;
+  padding: $spacing-lg 0;
+  position: relative;
+  z-index: 1;
+}
+
+// Footer
+.site-footer {
+  background: linear-gradient(135deg, darken($primary-color, 10%) 0%, $primary-color 100%);
+  color: white;
+  padding: $spacing-xl 0 $spacing-md;
+  position: relative;
+  
+  .footer-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="rgba(255,255,255,0.03)"/></svg>');
+    background-size: 150px 150px;
+    opacity: 0.5;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-lg;
+    position: relative;
+    z-index: 2;
+    
+    .footer-section {
+      h3, h4 {
+        color: white;
+        margin-bottom: $spacing-sm;
+      }
+      
+      ul {
+        list-style: none;
+        margin: 0;
+        
+        li {
+          margin-bottom: $spacing-xs;
+          
+          a {
+            color: lighten($primary-color, 40%);
+            transition: color 0.3s ease;
+            
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+      
+      .social-links {
+        display: flex;
+        gap: $spacing-sm;
+        margin-top: $spacing-sm;
+        
+        .social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: white;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+          }
+        }
+      }
+      
+      .newsletter-form {
+        display: flex;
+        gap: $spacing-xs;
+        margin-top: $spacing-sm;
+        
+        input {
+          flex: 1;
+          padding: $spacing-xs $spacing-sm;
+          border: none;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          
+          &:focus {
+            outline: none;
+          }
+        }
+        
+        button {
+          padding: $spacing-xs $spacing-sm;
+          background: $secondary-color;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          
+          &:hover {
+            background: darken($secondary-color, 10%);
+          }
+        }
+      }
+      
+      .weather-info {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        margin-top: $spacing-sm;
+        font-size: 0.9rem;
+        color: lighten($primary-color, 30%);
+      }
+    }
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacing-md;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+    
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      gap: $spacing-sm;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: $spacing-md;
+      
+      a {
+        color: lighten($primary-color, 30%);
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: $breakpoint-md) {
+  .container {
+    padding: 0 $spacing-sm;
+  }
+  
+  .main-content {
+    padding: $spacing-md 0;
+  }
+  
+  .site-header {
+    padding: $spacing-xs 0;
+  }
+}

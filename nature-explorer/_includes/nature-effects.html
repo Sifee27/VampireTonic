@@ -1,0 +1,93 @@
+<!-- Nature Effects Container -->
+<div class="nature-effects">
+  <!-- Floating leaves -->
+  <div class="leaves-container">
+    <div class="leaf leaf-1">🍃</div>
+    <div class="leaf leaf-2">🍂</div>
+    <div class="leaf leaf-3">🍃</div>
+    <div class="leaf leaf-4">🍂</div>
+    <div class="leaf leaf-5">🍃</div>
+    <div class="leaf leaf-6">🍂</div>
+  </div>
+  
+  <!-- Parallax layers -->
+  <div class="parallax-layers">
+    <div class="parallax-layer layer-1"></div>
+    <div class="parallax-layer layer-2"></div>
+    <div class="parallax-layer layer-3"></div>
+  </div>
+  
+  <!-- Weather effects -->
+  <div class="weather-effects">
+    <div class="sun-rays"></div>
+    <div class="cloud-shadows"></div>
+  </div>
+  
+  <!-- Trail particles -->
+  <div class="trail-particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+  </div>
+</div>
+
+<script>
+// Nature-themed ambient effects
+document.addEventListener('DOMContentLoaded', function() {
+  // Leaf animation
+  const leaves = document.querySelectorAll('.leaf');
+  leaves.forEach((leaf, index) => {
+    const duration = 8 + Math.random() * 4;
+    const delay = Math.random() * 2;
+    const drift = 20 + Math.random() * 40;
+    
+    leaf.style.animationDuration = duration + 's';
+    leaf.style.animationDelay = delay + 's';
+    leaf.style.setProperty('--drift', drift + 'px');
+  });
+  
+  // Parallax effect
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxLayers = document.querySelectorAll('.parallax-layer');
+    
+    parallaxLayers.forEach((layer, index) => {
+      const speed = 0.2 + (index * 0.1);
+      const yPos = -(scrolled * speed);
+      layer.style.transform = 'translateY(' + yPos + 'px)';
+    });
+  });
+  
+  // Weather effects
+  function createWeatherEffect() {
+    const weatherContainer = document.querySelector('.weather-effects');
+    if (!weatherContainer) return;
+    
+    const effect = document.createElement('div');
+    effect.className = 'weather-particle';
+    effect.style.left = Math.random() * 100 + '%';
+    effect.style.animationDuration = (3 + Math.random() * 3) + 's';
+    
+    weatherContainer.appendChild(effect);
+    
+    setTimeout(() => {
+      effect.remove();
+    }, 6000);
+  }
+  
+  // Create weather effects periodically
+  setInterval(createWeatherEffect, 2000);
+  
+  // Trail particles animation
+  const particles = document.querySelectorAll('.particle');
+  particles.forEach(particle => {
+    const duration = 15 + Math.random() * 10;
+    const delay = Math.random() * 5;
+    
+    particle.style.animationDuration = duration + 's';
+    particle.style.animationDelay = delay + 's';
+  });
+});
+</script>

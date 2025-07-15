@@ -1,0 +1,64 @@
+<footer class="site-footer">
+  <div class="footer-background"></div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>{{ site.title }}</h3>
+        <p>{{ site.description }}</p>
+        <div class="social-links">
+          {% for social in site.social %}
+          <a href="{{ social.url }}" target="_blank" class="social-link">
+            <i class="fab fa-{{ social.icon }}"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/trails/">Trail Guides</a></li>
+          <li><a href="/wildlife/">Wildlife</a></li>
+          <li><a href="/gear/">Gear Reviews</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/safety/">Safety Tips</a></li>
+          <li><a href="/weather/">Weather Info</a></li>
+          <li><a href="/permits/">Permits</a></li>
+          <li><a href="/conservation/">Conservation</a></li>
+          <li><a href="/photography-tips/">Photo Tips</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Stay Updated</h4>
+        <p>Get the latest trail conditions and wildlife updates</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="weather-info">
+          <i class="fas fa-thermometer-half"></i>
+          <span>Current conditions: Perfect for hiking!</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="copyright">
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

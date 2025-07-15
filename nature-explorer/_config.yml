@@ -1,0 +1,111 @@
+# Nature Explorer Theme Configuration
+# Welcome to the Nature Explorer theme, designed for outdoor enthusiasts and nature lovers
+
+title: "Nature Explorer"
+description: "Discover the wilderness within and around you. A theme for outdoor adventures, nature photography, and exploring the great outdoors."
+author: "Nature Explorer"
+email: "explorer@naturetrails.com"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://localhost:4003" # the base hostname & protocol for your site
+
+# Nature Explorer Theme Settings
+theme_settings:
+  brand_color: "#2d5016" # Forest green
+  accent_color: "#8b4513" # Saddle brown
+  text_color: "#2c3e2d" # Dark forest
+  background_color: "#f5f5dc" # Beige/natural
+  header_text_color: "#ffffff"
+  link_color: "#4a7c59" # Sage green
+  link_hover_color: "#2d5016"
+
+# Social Links
+social:
+  - title: "Instagram"
+    url: "https://instagram.com/natureexplorer"
+    icon: "instagram"
+  - title: "Twitter"
+    url: "https://twitter.com/natureexplorer"
+    icon: "twitter"
+  - title: "YouTube"
+    url: "https://youtube.com/natureexplorer"
+    icon: "youtube"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Trail Guide"
+    url: "/trails/"
+  - title: "Wildlife"
+    url: "/wildlife/"
+  - title: "Photography"
+    url: "/photography/"
+  - title: "Gear Reviews"
+    url: "/gear/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+  - nature-explorer.gemspec
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Permalink structure
+permalink: /explore/:categories/:year/:month/:day/:title/
+
+# Pagination
+paginate: 6
+paginate_path: "/adventures/page:num/"
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Nature Explorer"
+      category: "adventures"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Collections
+collections:
+  trails:
+    output: true
+    permalink: /trails/:name/
+  wildlife:
+    output: true
+    permalink: /wildlife/:name/
+  gear:
+    output: true
+    permalink: /gear/:name/
+
+# SEO and Analytics
+google_analytics: "UA-XXXXXXXX-X"

@@ -1,0 +1,524 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div class="container">
+    
+    <!-- Post Header -->
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | default: "Add blog post title here" }}</h1>
+      <div class="post-meta">
+        <span class="post-date">{{ page.date | date: '%B %d, %Y' }}</span>
+        {% if page.author %}
+          <span class="post-author">by {{ page.author }}</span>
+        {% endif %}
+        {% if page.read_time %}
+          <span class="post-read-time">{{ page.read_time }} min read</span>
+        {% endif %}
+      </div>
+      
+      {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <a href="{{ '/blog/tag/' | append: tag | relative_url }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      {% if page.image %}
+        <div class="post-image">
+          <img src="{{ page.image }}" alt="{{ page.title }}" class="pixel-art">
+        </div>
+      {% endif %}
+    </header>
+    
+    <!-- Post Content -->
+    <div class="post-content">
+      {{ content }}
+    </div>
+    
+    <!-- Post Footer -->
+    <footer class="post-footer">
+      
+      <!-- Share Buttons -->
+      <div class="share-buttons">
+        <h4>Share this post:</h4>
+        <div class="share-links">
+          <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="share-link twitter">
+            Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="share-link facebook">
+            Facebook
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | uri_escape }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="share-link linkedin">
+            LinkedIn
+          </a>
+          <a href="https://www.reddit.com/submit?url={{ site.url }}{{ page.url }}&title={{ page.title | uri_escape }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="share-link reddit">
+            Reddit
+          </a>
+        </div>
+      </div>
+      
+      <!-- Author Bio -->
+      {% if page.author and site.authors[page.author] %}
+        <div class="author-bio">
+          <div class="author-avatar">
+            <img src="{{ site.authors[page.author].avatar | default: '/assets/images/default-avatar.png' }}" 
+                 alt="{{ site.authors[page.author].name }}" 
+                 class="pixel-art">
+          </div>
+          <div class="author-info">
+            <h4 class="author-name">{{ site.authors[page.author].name }}</h4>
+            <p class="author-description">{{ site.authors[page.author].bio | default: "Add author bio here" }}</p>
+            <div class="author-links">
+              {% if site.authors[page.author].website %}
+                <a href="{{ site.authors[page.author].website }}" class="author-link">Website</a>
+              {% endif %}
+              {% if site.authors[page.author].twitter %}
+                <a href="{{ site.authors[page.author].twitter }}" class="author-link">Twitter</a>
+              {% endif %}
+              {% if site.authors[page.author].github %}
+                <a href="{{ site.authors[page.author].github }}" class="author-link">GitHub</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- Related Posts -->
+      <div class="related-posts">
+        <h4>Related Posts</h4>
+        <div class="related-posts-grid">
+          {% assign related_posts = site.related_posts | default: site.posts %}
+          {% for post in related_posts limit: 3 %}
+            <div class="related-post">
+              <a href="{{ post.url }}" class="related-post-link">
+                {% if post.image %}
+                  <img src="{{ post.image }}" alt="{{ post.title }}" class="pixel-art">
+                {% endif %}
+                <h5>{{ post.title | default: "Add related post title here" }}</h5>
+                <p class="related-post-date">{{ post.date | date: '%B %d, %Y' }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="post-navigation">
+        <div class="nav-links">
+          {% if page.previous %}
+            <div class="nav-previous">
+              <a href="{{ page.previous.url }}" class="nav-link">
+                <span class="nav-direction">← Previous</span>
+                <span class="nav-title">{{ page.previous.title | default: "Add previous post title here" }}</span>
+              </a>
+            </div>
+          {% endif %}
+          
+          {% if page.next %}
+            <div class="nav-next">
+              <a href="{{ page.next.url }}" class="nav-link">
+                <span class="nav-direction">Next →</span>
+                <span class="nav-title">{{ page.next.title | default: "Add next post title here" }}</span>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+      
+    </footer>
+    
+  </div>
+</article>
+
+<style>
+.post {
+  padding: 2rem 0;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: var(--pixel-border);
+}
+
+.post-title {
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-2xl);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 0px var(--background-color);
+}
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin-right: 1rem;
+}
+
+.post-date {
+  color: var(--primary-color);
+}
+
+.post-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.post-tags .tag {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.post-tags .tag:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.post-image {
+  margin-top: 2rem;
+}
+
+.post-image img {
+  max-width: 100%;
+  height: auto;
+  border: var(--pixel-border);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.post-content {
+  font-family: var(--font-mono);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 3rem;
+}
+
+.post-content h2 {
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-pixel);
+}
+
+.post-content h3 {
+  color: var(--secondary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-pixel);
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+
+.post-content blockquote {
+  background-color: var(--surface-color);
+  border-left: 4px solid var(--primary-color);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  position: relative;
+}
+
+.post-content blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary-color);
+  position: absolute;
+  top: -10px;
+  left: 1rem;
+  font-family: var(--font-pixel);
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border: var(--pixel-border);
+  margin: 1rem 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.post-content .highlight {
+  margin: 1.5rem 0;
+}
+
+.post-footer {
+  border-top: var(--pixel-border);
+  padding-top: 2rem;
+}
+
+.share-buttons {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.share-buttons h4 {
+  font-family: var(--font-pixel);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.share-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.share-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border: var(--pixel-border);
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-xs);
+  transition: var(--transition-base);
+}
+
+.share-link:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.author-bio {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border: var(--pixel-border);
+  margin-bottom: 3rem;
+}
+
+.author-avatar img {
+  width: 80px;
+  height: 80px;
+  border: var(--pixel-border);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-family: var(--font-pixel);
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.author-description {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.author-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.author-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  transition: var(--transition-base);
+}
+
+.author-link:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.related-posts {
+  margin-bottom: 3rem;
+}
+
+.related-posts h4 {
+  font-family: var(--font-pixel);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.related-post {
+  background-color: var(--surface-color);
+  border: var(--pixel-border);
+  padding: 1rem;
+  transition: var(--transition-base);
+}
+
+.related-post:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pixel-shadow);
+}
+
+.related-post-link {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+}
+
+.related-post img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border: var(--pixel-border);
+  margin-bottom: 0.5rem;
+}
+
+.related-post h5 {
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-sm);
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.related-post-date {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.post-navigation {
+  border-top: var(--pixel-border);
+  padding-top: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-previous,
+.nav-next {
+  flex: 1;
+  max-width: 48%;
+}
+
+.nav-next {
+  text-align: right;
+}
+
+.nav-link {
+  display: block;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  border: var(--pixel-border);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.nav-link:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.nav-direction {
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.nav-title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .post-header {
+    text-align: left;
+  }
+  
+  .post-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .post-tags {
+    justify-content: flex-start;
+  }
+  
+  .author-bio {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .author-links {
+    justify-content: center;
+  }
+  
+  .related-posts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+  }
+  
+  .nav-previous,
+  .nav-next {
+    max-width: 100%;
+    text-align: left;
+  }
+  
+  .share-links {
+    justify-content: flex-start;
+  }
+}
+</style>

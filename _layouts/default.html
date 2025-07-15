@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Preconnect for critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts with display swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/vampire-tonic.css' | relative_url }}">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Enhanced Meta Tags -->
+    {% include head-meta.html %}
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+    
+    <!-- Google Analytics -->
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+        {% include google-analytics.html %}
+    {% endif %}
+</head>
+
+<body class="vampire-theme">
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Gothic Vignette Background -->
+    <div class="vampire-vignette"></div>
+    
+    <!-- Page Wrapper -->
+    <div class="site-wrapper">
+        <!-- Fixed Gothic Header -->
+        <header class="site-header fixed-header" role="banner">
+            <nav class="navbar gothic-navbar" role="navigation" aria-label="Main navigation">
+                <a href="/" class="nav-logo gothic-logo" rel="home">VampireTonic</a>
+                <ul class="nav-menu" role="menubar">
+                    <li><a href="#home" role="menuitem">Home</a></li>
+                    <li><a href="#features" role="menuitem">Features</a></li>
+                    <li><a href="#palette" role="menuitem">Colors</a></li>
+                    <li><a href="#typography" role="menuitem">Typography</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="main-content" class="site-main" role="main" tabindex="-1">
+            <div class="content-container">
+                {{ content }}
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="site-footer gothic-footer" role="contentinfo">
+            <span>&copy; {{ site.time | date: '%Y' }} VampireTonic. Crafted in the eternal night.</span>
+        </footer>
+    </div>
+                            <a class="page-link" href="#palette">Colors</a>
+                            <a class="page-link" href="#typography">Typography</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content" aria-label="Content">
+            <div class="wrapper">
+                {{ content }}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="wrapper">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <i class="fas fa-bat"></i>
+                            {{ site.title }}
+                        </h3>
+                        <p class="footer-description">{{ site.description }}</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>VampireTonic</h4>
+                        <ul class="footer-links">
+                            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                            <li><a href="https://github.com/Sifee27/VampireTonic" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/Sifee27/VampireTonic" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="{{ '/feed.xml' | relative_url }}" class="social-link" aria-label="RSS">
+                                <i class="fas fa-rss"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Crafted in the shadows.</p>
+                    <div class="footer-ornament">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    
+    <!-- Vampire Theme Effects -->
+    {% include vampire-effects.html %}
+    
+    <!-- Theme Toggle Script -->
+    <script>
+        // Add some vampire-themed interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add glow effect on hover for navigation links
+            const navLinks = document.querySelectorAll('.page-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.textShadow = '0 0 10px var(--accent-color)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.textShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

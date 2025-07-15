@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<article class="post-content">
+  <header class="post-header">
+    <h1 class="post-title shimmer-text">{{ page.title | escape }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {% if page.author %}
+      <span class="post-author">by {{ page.author }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-body crystal-border">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="post-tags">
+    <h3>Tags</h3>
+    <div class="tags-list">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</article>
+
+{% if site.related_posts.size > 0 %}
+<section class="related-posts">
+  <h2 class="section-title shimmer-text">Related Posts</h2>
+  <div class="related-posts-grid">
+    {% for post in site.related_posts limit: 3 %}
+    <article class="related-post crystal-border">
+      <h3 class="related-post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+      <p class="related-post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+      </p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

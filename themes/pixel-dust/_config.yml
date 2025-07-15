@@ -1,0 +1,186 @@
+# PixelDust Jekyll Theme Configuration
+
+# Site settings
+title: "PixelDust"
+description: "A retro pixel theme for artists and game developers with hover effects and animated sprites"
+url: "http://0.0.0.0:4005"
+baseurl: ""
+
+# Artist/Developer info
+author:
+  name: "PixelDust Developer"
+  email: "developer@pixeldust.com"
+  website: "https://pixeldust.dev"
+  bio: "Creating pixel art and retro games"
+
+# Social links
+social:
+  twitter: "https://twitter.com/pixeldust"
+  instagram: "https://instagram.com/pixeldust"
+  github: "https://github.com/pixeldust"
+  itch: "https://pixeldust.itch.io"
+  deviantart: "https://deviantart.com/pixeldust"
+  youtube: "https://youtube.com/@pixeldust"
+  discord: "https://discord.gg/pixeldust"
+
+# Portfolio settings
+portfolio:
+  featured_work: "featured"
+  categories:
+    - "pixel-art"
+    - "game-assets"
+    - "illustrations"
+  
+# Game development settings
+gamedev:
+  current_project: "Retro Pixel Adventure"
+  engine: "Unity"
+  platforms: "PC, Mobile, Web"
+
+# Theme settings
+theme_settings:
+  # Pixel theme colors
+  primary_color: "#00ff41"      # Matrix green
+  secondary_color: "#ff6b35"    # Retro orange
+  accent_color: "#ff0080"       # Hot pink
+  background_color: "#0a0a0a"   # Dark background
+  text_color: "#ffffff"         # White text
+  
+  # Pixel aesthetic
+  pixel_font: "Press Start 2P"
+  regular_font: "Courier New"
+  font_size_base: "14px"
+  
+  # Effects
+  enable_hover_effects: true
+  enable_animations: true
+  enable_particles: true
+  enable_glitch_effects: true
+  
+  # Layout
+  header_height: "80px"
+  sidebar_width: "300px"
+  content_max_width: "1200px"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Portfolio"
+    url: "/portfolio/"
+  - title: "Games"
+    url: "/games/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Homepage sections
+homepage:
+  hero:
+    title: "Pixel Perfect Art"
+    subtitle: "Creating retro games and pixel art"
+    cta_text: "View Portfolio"
+    cta_link: "/portfolio/"
+    
+  featured_work:
+    title: "Featured Work"
+    description: "Showcase of my latest pixel art and game projects"
+    
+  services:
+    title: "Services"
+    items:
+      - title: "Pixel Art Commissions"
+        description: "Custom pixel art for your projects"
+        icon: "pixel-icon"
+      - title: "Game Asset Creation"
+        description: "Complete game asset packages"
+        icon: "game-icon"
+      - title: "Character Design"
+        description: "Retro-style character concepts and sprites"
+        icon: "character-icon"
+
+# Blog settings
+blog:
+  title: "PixelDust Blog"
+  description: "Game development insights and pixel art tutorials"
+  posts_per_page: 6
+
+# Portfolio settings
+portfolio_settings:
+  items_per_page: 12
+  enable_lightbox: true
+  enable_categories: true
+  enable_tags: true
+
+# Contact settings
+contact:
+  email: "hello@pixeldust.com"
+  form_action: "https://formspree.io/f/yourform"
+  response_message: "Thanks for reaching out! I'll get back to you soon."
+
+# SEO settings
+seo:
+  google_analytics: "UA-XXXXXXXXX-X"
+  google_site_verification: "your-verification-code"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:name/
+  games:
+    output: true
+    permalink: /games/:name/
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+  - scope:
+      path: ""
+      type: "portfolio"
+    values:
+      layout: "portfolio-item"
+  - scope:
+      path: ""
+      type: "games"
+    values:
+      layout: "game"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
