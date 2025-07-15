@@ -1,5 +1,6 @@
 ---
-layout: home
+layout: default
+
 title: "VampireTonic"
 subtitle: "A dark, gothic Jekyll theme inspired by vampires"
 ---
