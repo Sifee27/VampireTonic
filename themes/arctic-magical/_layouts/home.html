@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title shimmer-text">{{ page.title | default: 'Welcome to Arctic Magical' }}</h1>
+    <p class="hero-subtitle">Where ice meets magic and wonder never ends</p>
+  </div>
+  <div class="hero-particles" aria-hidden="true"></div>
+</div>
+
+<section class="home-content">
+  <div class="content-wrapper">
+    {{ content }}
+  </div>
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="recent-posts">
+  <div class="posts-container">
+    <h2 class="section-title shimmer-text">Recent Posts</h2>
+    <div class="posts-grid">
+      {% for post in site.posts limit: 3 %}
+      <article class="post-card crystal-border">
+        <div class="post-content">
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </h3>
+          <p class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          </p>
+          <div class="post-excerpt">
+            {{ post.excerpt | strip_html | truncate: 120 }}
+          </div>
+          <a href="{{ post.url | relative_url }}" class="read-more">Read more</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

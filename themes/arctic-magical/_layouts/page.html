@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<article class="page-content">
+  <header class="page-header">
+    <h1 class="page-title shimmer-text">{{ page.title | escape }}</h1>
+    {% if page.subtitle %}
+    <p class="page-subtitle">{{ page.subtitle | escape }}</p>
+    {% endif %}
+  </header>
+
+  <div class="page-body crystal-border">
+    {{ content }}
+  </div>
+</article>

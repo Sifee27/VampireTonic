@@ -1,0 +1,124 @@
+# Purple Elegance Theme Configuration
+# A sophisticated Jekyll theme with elegant purple aesthetics
+
+title: "Purple Elegance"
+description: "A sophisticated Jekyll theme featuring elegant purple aesthetics, perfect for creative portfolios, luxury brands, and artistic endeavors."
+author: "Purple Elegance"
+email: "contact@purpleelegance.com"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://localhost:4004" # the base hostname & protocol for your site
+
+# Purple Elegance Theme Settings
+theme_settings:
+  primary_color: "#6B46C1"    # Royal purple
+  secondary_color: "#8B5CF6"  # Light purple
+  accent_color: "#A855F7"     # Bright purple
+  text_color: "#374151"       # Dark gray
+  background_color: "#F9FAFB" # Light gray
+  header_text_color: "#FFFFFF"
+  link_color: "#7C3AED"       # Purple link
+  link_hover_color: "#5B21B6" # Darker purple
+
+# Social Links
+social:
+  - title: "Instagram"
+    url: "https://instagram.com/purpleelegance"
+    icon: "instagram"
+  - title: "Twitter"
+    url: "https://twitter.com/purpleelegance"
+    icon: "twitter"
+  - title: "Dribbble"
+    url: "https://dribbble.com/purpleelegance"
+    icon: "dribbble"
+  - title: "Behance"
+    url: "https://behance.net/purpleelegance"
+    icon: "behance"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Portfolio"
+    url: "/portfolio/"
+  - title: "Services"
+    url: "/services/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+  - purple-elegance.gemspec
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Permalink structure
+permalink: /blog/:year/:month/:day/:title/
+
+# Pagination
+paginate: 8
+paginate_path: "/blog/page:num/"
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Purple Elegance"
+      category: "blog"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:name/
+  services:
+    output: true
+    permalink: /services/:name/
+  testimonials:
+    output: false
+
+# SEO and Analytics
+google_analytics: "UA-XXXXXXXX-X"
+google_fonts:
+  - "Playfair+Display:400,700"
+  - "Inter:300,400,500,600,700"
+
+# Theme specific settings
+purple_elegance:
+  hero_animation: true
+  gradient_effects: true
+  particles: true
+  smooth_scroll: true
+  dark_mode: false

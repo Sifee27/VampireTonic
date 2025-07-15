@@ -1,0 +1,197 @@
+---
+layout: default
+---
+
+<div class="post-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> <i class="fas fa-chevron-right"></i> 
+      <a href="/adventures/">Adventures</a> <i class="fas fa-chevron-right"></i> 
+      {{ page.title }}
+    </div>
+    <div class="post-meta">
+      <span class="post-date">
+        <i class="fas fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}
+      </span>
+      {% if page.author %}
+      <span class="post-author">
+        <i class="fas fa-user"></i> {{ page.author }}
+      </span>
+      {% endif %}
+      {% if page.category %}
+      <span class="post-category">
+        <i class="fas fa-folder"></i> {{ page.category | capitalize }}
+      </span>
+      {% endif %}
+      {% if page.reading_time %}
+      <span class="reading-time">
+        <i class="fas fa-clock"></i> {{ page.reading_time }} min read
+      </span>
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+    <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if page.hero_image %}
+<div class="post-hero">
+  <img src="{{ page.hero_image | relative_url }}" alt="{{ page.title }}">
+  {% if page.hero_caption %}
+  <div class="hero-caption">{{ page.hero_caption }}</div>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="post-content">
+  <div class="container">
+    <div class="content-wrapper">
+      <article class="post-article">
+        <div class="post-body">
+          {{ content }}
+        </div>
+        
+        {% if page.location %}
+        <div class="post-location">
+          <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+          <p>{{ page.location }}</p>
+          {% if page.coordinates %}
+          <p class="coordinates">Coordinates: {{ page.coordinates }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+        
+        {% if page.difficulty %}
+        <div class="post-difficulty">
+          <h3><i class="fas fa-signal"></i> Difficulty</h3>
+          <div class="difficulty-rating">
+            {% assign difficulty_num = page.difficulty | times: 1 %}
+            {% for i in (1..5) %}
+              {% if i <= difficulty_num %}
+                <i class="fas fa-star"></i>
+              {% else %}
+                <i class="far fa-star"></i>
+              {% endif %}
+            {% endfor %}
+            <span class="difficulty-text">{{ page.difficulty_text | default: "Moderate" }}</span>
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if page.gear_needed %}
+        <div class="post-gear">
+          <h3><i class="fas fa-backpack"></i> Gear Needed</h3>
+          <ul class="gear-list">
+            {% for item in page.gear_needed %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        {% if page.tags %}
+        <div class="post-tags">
+          <h4>Tags:</h4>
+          {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="post-sharing">
+          <h4>Share this adventure:</h4>
+          <div class="sharing-buttons">
+            <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-btn twitter">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-btn facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-btn linkedin">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </article>
+      
+      <aside class="post-sidebar">
+        {% if page.trail_stats %}
+        <div class="trail-stats">
+          <h3><i class="fas fa-chart-line"></i> Trail Stats</h3>
+          <div class="stat-grid">
+            {% if page.trail_stats.distance %}
+            <div class="stat-item">
+              <i class="fas fa-route"></i>
+              <span class="stat-value">{{ page.trail_stats.distance }}</span>
+              <span class="stat-label">Distance</span>
+            </div>
+            {% endif %}
+            {% if page.trail_stats.elevation %}
+            <div class="stat-item">
+              <i class="fas fa-mountain"></i>
+              <span class="stat-value">{{ page.trail_stats.elevation }}</span>
+              <span class="stat-label">Elevation</span>
+            </div>
+            {% endif %}
+            {% if page.trail_stats.time %}
+            <div class="stat-item">
+              <i class="fas fa-clock"></i>
+              <span class="stat-value">{{ page.trail_stats.time }}</span>
+              <span class="stat-label">Time</span>
+            </div>
+            {% endif %}
+            {% if page.trail_stats.season %}
+            <div class="stat-item">
+              <i class="fas fa-leaf"></i>
+              <span class="stat-value">{{ page.trail_stats.season }}</span>
+              <span class="stat-label">Best Season</span>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        
+        <div class="related-posts">
+          <h3>Related Adventures</h3>
+          {% for post in site.related_posts limit:3 %}
+          <article class="related-post">
+            <div class="related-image">
+              {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+              {% else %}
+              <div class="default-image">
+                <i class="fas fa-mountain"></i>
+              </div>
+              {% endif %}
+            </div>
+            <div class="related-content">
+              <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+              <p class="related-excerpt">{{ post.excerpt | strip_html | truncatewords: 12 }}</p>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<nav class="post-navigation">
+  <div class="container">
+    {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}" class="nav-previous">
+      <i class="fas fa-chevron-left"></i>
+      <span>{{ page.previous.title }}</span>
+    </a>
+    {% endif %}
+    
+    {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}" class="nav-next">
+      <span>{{ page.next.title }}</span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+    {% endif %}
+  </div>
+</nav>

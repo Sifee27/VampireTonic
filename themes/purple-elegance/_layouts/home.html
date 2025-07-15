@@ -1,0 +1,193 @@
+---
+layout: default
+---
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title animate-fadeInUp">
+        Welcome to <span class="highlight">{{ site.title }}</span>
+      </h1>
+      <p class="hero-subtitle animate-fadeInUp">{{ site.description }}</p>
+      <div class="hero-actions animate-fadeInUp">
+        <a href="#portfolio" class="btn btn-primary btn-lg">View Portfolio</a>
+        <a href="/contact/" class="btn btn-outline btn-lg">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-image animate-fadeIn">
+      <img src="{{ '/assets/images/hero-image.jpg' | relative_url }}" alt="Purple Elegance showcase">
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title text-gradient-animate">Featured Portfolio</h2>
+      <p class="section-subtitle">Discover our latest creative works and design projects</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="portfolio-grid">
+      {% for item in site.portfolio limit:6 %}
+      <div class="portfolio-item animate-fadeInUp">
+        <div class="portfolio-image">
+          <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
+          <div class="overlay">
+            <div class="overlay-content">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.excerpt | strip_html | truncatewords: 10 }}</p>
+              <a href="{{ item.url | relative_url }}" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-content">
+          <div class="portfolio-category">{{ item.category }}</div>
+          <h3 class="portfolio-title">{{ item.title }}</h3>
+          <p class="portfolio-description">{{ item.excerpt | strip_html | truncatewords: 15 }}</p>
+          <div class="portfolio-tags">
+            {% for tag in item.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="/portfolio/" class="btn btn-gradient btn-lg">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Professional design solutions tailored to your needs</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="services-grid">
+      {% for service in site.services limit:3 %}
+      <div class="service-card animate-fadeInUp">
+        <div class="service-icon">
+          <i class="{{ service.icon }}"></i>
+        </div>
+        <h3 class="service-title">{{ service.title }}</h3>
+        <p class="service-description">{{ service.description }}</p>
+        <ul class="service-features">
+          {% for feature in service.features %}
+          <li>{{ feature }}</li>
+          {% endfor %}
+        </ul>
+        <a href="{{ service.url | relative_url }}" class="btn btn-outline">Learn More</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item animate-fadeInUp">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item animate-fadeInUp">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item animate-fadeInUp">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item animate-fadeInUp">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-subtitle">Real feedback from our satisfied customers</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="testimonials-grid">
+      {% for testimonial in site.testimonials limit:3 %}
+      <div class="testimonial-card animate-fadeInUp">
+        <div class="testimonial-content">
+          {{ testimonial.content }}
+        </div>
+        <div class="testimonial-author">
+          <img src="{{ testimonial.avatar | relative_url }}" alt="{{ testimonial.name }}" class="author-avatar">
+          <div class="author-info">
+            <div class="author-name">{{ testimonial.name }}</div>
+            <div class="author-role">{{ testimonial.role }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Blog Posts</h2>
+      <p class="section-subtitle">Insights, tips, and updates from our team</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="blog-grid">
+      {% for post in site.posts limit:3 %}
+      <article class="blog-post animate-fadeInUp">
+        <div class="post-image">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-date">
+              <i class="fas fa-calendar"></i>
+              {{ post.date | date: "%B %d, %Y" }}
+            </span>
+            <span class="post-category">{{ post.category }}</span>
+          </div>
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+          <a href="{{ post.url | relative_url }}" class="read-more">
+            Read More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="/blog/" class="btn btn-primary btn-lg">View All Posts</a>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-signup">
+      <h2 class="newsletter-title">Stay Updated</h2>
+      <p class="newsletter-description">Subscribe to our newsletter for the latest updates and exclusive content</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>

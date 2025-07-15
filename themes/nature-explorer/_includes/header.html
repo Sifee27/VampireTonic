@@ -1,0 +1,55 @@
+<header class="site-header">
+  <div class="header-background"></div>
+  <div class="container">
+    <div class="header-content">
+      <div class="site-branding">
+        <a href="/" class="site-logo">
+          <i class="fas fa-tree"></i>
+          <span class="site-title">{{ site.title }}</span>
+        </a>
+      </div>
+      
+      <nav class="main-navigation">
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <ul class="nav-menu">
+          {% for item in site.navigation %}
+          <li class="nav-item">
+            <a href="{{ item.url | relative_url }}" class="nav-link{% if page.url == item.url %} active{% endif %}">
+              {{ item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <div class="search-toggle">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="weather-widget">
+          <i class="fas fa-cloud-sun"></i>
+          <span class="weather-temp">72°F</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="search-overlay">
+    <div class="search-container">
+      <form class="search-form">
+        <input type="text" placeholder="Search trails, wildlife, gear..." class="search-input">
+        <button type="submit" class="search-submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</header>
