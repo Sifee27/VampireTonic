@@ -1,0 +1,79 @@
+<!-- Vampire Theme JavaScript Enhancements -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add blood drop animation effect
+    function createBloodDrop() {
+        const drop = document.createElement('div');
+        drop.className = 'blood-drop';
+        drop.style.left = Math.random() * 100 + '%';
+        drop.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(drop);
+        
+        setTimeout(() => {
+            drop.remove();
+        }, 5000);
+    }
+    
+    // Create blood drops occasionally
+    setInterval(createBloodDrop, 10000);
+    
+    // Add mystical glow to vampire icons
+    const vampireIcons = document.querySelectorAll('.fas.fa-bat, .fas.fa-moon, .fas.fa-spider');
+    vampireIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            this.style.filter = 'drop-shadow(0 0 10px #DC143C)';
+            this.style.transform = 'scale(1.1)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            this.style.filter = 'none';
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Add typing effect to main title
+    const mainTitle = document.querySelector('h1');
+    if (mainTitle && mainTitle.textContent.includes('VampireTonic')) {
+        const text = mainTitle.textContent;
+        mainTitle.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                mainTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+    }
+});
+</script>
+
+<style>
+/* Blood drop animation */
+.blood-drop {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #8B0000;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    animation: bloodFall linear;
+    top: -10px;
+}
+
+@keyframes bloodFall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Mystical transitions */
+.fas {
+    transition: all 0.3s ease;
+}
+</style>
