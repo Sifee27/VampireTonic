@@ -11,11 +11,11 @@ subtitle: "A dark, gothic Jekyll theme inspired by vampires"
 
 ## Theme Features {#features}
 
-- **🦇 Dark Gothic Design**: Deep blacks, rich crimsons, and shadowy aesthetics
-- **✨ Elegant Typography**: Beautiful serif fonts that evoke classic gothic literature  
-- **📱 Responsive Layout**: Looks stunning on all devices
-- **⚡ Fast Loading**: Optimized for performance
-- **🔍 SEO Friendly**: Built with best practices for search engines
+- **Dark Gothic Design**: Deep blacks, rich crimsons, and shadowy aesthetics
+- **Elegant Typography**: Beautiful serif fonts that evoke classic gothic literature  
+- **Responsive Layout**: Looks stunning on all devices
+- **Fast Loading**: Optimized for performance
+- **SEO Friendly**: Built with best practices for search engines
 
 ## Color Palette {#palette}
 

@@ -1,7 +1,4 @@
-// VampireTonic Layout - Clean and Optimized
-// Following Jekyll and SCSS best practices
-
-// Site Header
+// Site Header - Clean and optimized
 .site-header {
   background: linear-gradient(135deg, var(--background-color) 0%, var(--secondary-color) 100%);
   border-bottom: 3px solid var(--primary-color);
@@ -83,11 +80,6 @@
             width: 100%;
           }
         }
-        
-        &:focus {
-          outline: 2px solid var(--focus-color);
-          outline-offset: 2px;
-        }
       }
     }
   }
@@ -99,7 +91,7 @@
   padding: 3rem 0;
 }
 
-// Site Footer
+// Site Footer - Clean and optimized
 .site-footer {
   background: linear-gradient(135deg, var(--secondary-color) 0%, var(--background-color) 100%);
   border-top: 3px solid var(--primary-color);
@@ -140,11 +132,6 @@
           color: var(--accent-color);
           transform: translateX(5px);
         }
-        
-        &:focus {
-          outline: 2px solid var(--focus-color);
-          outline-offset: 2px;
-        }
       }
     }
   }
@@ -169,11 +156,6 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 12px var(--shadow-color);
       }
-      
-      &:focus {
-        outline: 2px solid var(--focus-color);
-        outline-offset: 2px;
-      }
     }
   }
   
@@ -191,12 +173,71 @@
   }
 }
 
-// Modern Header Layout (replaces old duplicated code)
+// Gothic Vignette Background
+.vampire-vignette {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(139,0,0,0.15) 0%, rgba(47,27,20,0.85) 100%);
+}
+
+// Enhanced Content Container
+.content-container {
+  max-width: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, rgba(13, 13, 13, 0.98) 0%, rgba(47, 27, 20, 0.95) 100%);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  min-height: calc(100vh - 14rem);
+  
+  // Center the content within the full-width container
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  // Add subtle entrance animation
+  animation: fadeInUp 0.8s ease-out;
+  
+  // Style the inner content wrapper
+  > * {
+    max-width: 1000px;
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Remove old gothic card styles
+.gothic-card {
+  display: none;
+}
+
+// Remove decorative corners
+.gothic-corner {
+  display: none;
+}
+
+// Enhanced Gothic Header
 .fixed-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
+  top: 0; left: 0; width: 100vw;
   z-index: 100;
   background: linear-gradient(135deg, rgba(47, 27, 20, 0.98) 0%, rgba(139, 0, 0, 0.95) 100%);
   backdrop-filter: blur(15px);
@@ -223,16 +264,11 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  
-  &:hover {
-    color: var(--gothic-gold);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-  }
-  
-  &:focus {
-    outline: 2px solid var(--focus-color);
-    outline-offset: 2px;
-  }
+}
+
+.gothic-logo:hover {
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
 .nav-menu {
@@ -241,33 +277,28 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  
-  li a {
-    font-family: 'Crimson Text', serif;
-    font-size: 1.1rem;
-    color: rgba(232, 232, 232, 0.9);
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    position: relative;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    border: 1px solid transparent;
-    
-    &:hover {
-      background: rgba(220, 20, 60, 0.15);
-      color: var(--accent-color);
-      border-color: rgba(220, 20, 60, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
-    }
-    
-    &:focus {
-      outline: 2px solid var(--focus-color);
-      outline-offset: 2px;
-    }
-  }
+}
+
+.nav-menu li a {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  color: rgba(232, 232, 232, 0.9);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+}
+
+.nav-menu li a:hover {
+  background: rgba(220, 20, 60, 0.15);
+  color: var(--accent-color);
+  border-color: rgba(220, 20, 60, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
 }
 
 // Main content spacing for fixed header
@@ -276,42 +307,6 @@
   min-height: calc(100vh - 7rem);
   padding: 0;
   width: 100%;
-}
-
-// Enhanced Content Container
-.content-container {
-  max-width: 100%;
-  width: 100vw;
-  margin: 0;
-  padding: 4rem 3rem;
-  background: linear-gradient(135deg, rgba(13, 13, 13, 0.98) 0%, rgba(47, 27, 20, 0.95) 100%);
-  position: relative;
-  z-index: 2;
-  backdrop-filter: blur(10px);
-  min-height: calc(100vh - 14rem);
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  animation: fadeInUp 0.8s ease-out;
-  
-  > * {
-    max-width: 1000px;
-    width: 100%;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 // Enhanced Footer
@@ -328,74 +323,8 @@
   backdrop-filter: blur(10px);
 }
 
-// Responsive Design - Mobile First Approach
+// Enhanced Responsive Design
 @media (max-width: 768px) {
-  .site-header {
-    .site-title {
-      font-size: 1.5rem;
-    }
-    
-    .site-nav {
-      .nav-trigger {
-        display: block;
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        
-        &:checked ~ .trigger {
-          display: flex;
-        }
-      }
-      
-      .menu-icon {
-        display: block;
-        float: right;
-        width: 36px;
-        height: 26px;
-        line-height: 0;
-        padding-top: 10px;
-        text-align: center;
-        cursor: pointer;
-        
-        span {
-          display: block;
-          height: 2px;
-          width: 18px;
-          background: var(--text-color);
-          margin: 4px auto;
-          transition: 0.3s;
-        }
-        
-        &:hover span {
-          background: var(--accent-color);
-        }
-      }
-      
-      .trigger {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--background-color);
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        padding: 1rem;
-        display: none;
-        flex-direction: column;
-        gap: 0.5rem;
-        z-index: 1000;
-        
-        .page-link {
-          padding: 0.75rem;
-          border-bottom: 1px solid var(--border-color);
-          
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-  }
-  
   .content-container {
     padding: 2.5rem 1.5rem;
     
@@ -412,13 +341,11 @@
   
   .nav-menu {
     gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-    li a {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-    }
+  }
+  
+  .nav-menu li a {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
   }
   
   .gothic-logo {
@@ -427,14 +354,7 @@
   
   .site-main {
     margin-top: 8rem;
-  }
-  
-  .wrapper {
-    padding: 0 1rem;
-  }
-  
-  .page-content {
-    padding: 2rem 0;
+    padding: 0;
   }
   
   h1 {
@@ -444,20 +364,18 @@
   h2 {
     font-size: 1.8rem;
   }
-  
-  h3 {
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
   .nav-menu {
     gap: 1rem;
-    
-    li a {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.9rem;
-    }
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-menu li a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
   }
   
   .content-container {
@@ -483,4 +401,125 @@
   h2 {
     font-size: 1.5rem;
   }
+}
+
+// Enhanced list styling
+.content-container ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+}
+
+.content-container li {
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.5rem;
+  padding-left: 3rem;
+  position: relative;
+  background: rgba(47, 27, 20, 0.3);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.content-container li:hover {
+  background: rgba(47, 27, 20, 0.5);
+  transform: translateX(5px);
+  border-left-color: #FFD700;
+}
+
+.content-container li::before {
+  content: "▶";
+  position: absolute;
+  left: 1.2rem;
+  top: 1rem;
+  color: var(--accent-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.content-container li:hover::before {
+  color: #FFD700;
+  transform: scale(1.2);
+}
+
+// Enhanced paragraph styling
+.content-container p {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: rgba(232, 232, 232, 0.9);
+}
+
+.content-container p:first-of-type {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  color: rgba(232, 232, 232, 0.95);
+}
+
+// Enhanced horizontal rule
+.content-container hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), #FFD700, var(--accent-color), transparent);
+  margin: 3rem 0;
+  position: relative;
+}
+
+.content-container hr::after {
+  content: "⚜";
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13, 13, 13, 0.95);
+  color: var(--accent-color);
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+// Add quote styling
+.content-container blockquote,
+.content-container em {
+  font-style: italic;
+  color: var(--accent-color);
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent-color);
+  background: rgba(47, 27, 20, 0.3);
+  border-radius: 8px;
+  position: relative;
+}
+
+.content-container blockquote::before,
+.content-container em::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-size: 3rem;
+  color: var(--accent-color);
+  opacity: 0.5;
+}
+
+// Enhanced strong text
+.content-container strong {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(220, 20, 60, 0.3);
+}
+
+// Add subtle glow effect to headings
+h1, h2 {
+  filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.3));
+}
+
+// Add hover effect to entire content container
+.content-container:hover {
+  box-shadow: 
+    0 25px 70px rgba(139, 0, 0, 0.5),
+    0 0 0 1px rgba(220, 20, 60, 0.2),
+    inset 0 1px 0 rgba(220, 20, 60, 0.15);
 }
